@@ -2,10 +2,14 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, FileText, BarChart2, Clock, Users } from "lucide-react";
+import { LayoutDashboard, FileText, BarChart2, Clock, Users, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSession } from "./SessionContextProvider"; // Import useSession
+import { Button } from "@/components/ui/button"; // Import Button component
 
 export const SidebarNav: React.FC = () => {
+  const { logout } = useSession(); // Get logout function from context
+
   const navItems = [
     {
       title: "Dashboard",
@@ -51,6 +55,14 @@ export const SidebarNav: React.FC = () => {
           {item.title}
         </NavLink>
       ))}
+      <Button
+        variant="ghost"
+        onClick={logout}
+        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sidebar-foreground transition-all hover:text-sidebar-primary justify-start"
+      >
+        <LogOut className="h-4 w-4" />
+        Déconnexion
+      </Button>
     </nav>
   );
 };
