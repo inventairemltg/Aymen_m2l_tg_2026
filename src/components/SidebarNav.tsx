@@ -2,13 +2,13 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, FileText, BarChart2, Clock, Users, LogOut } from "lucide-react";
+import { LayoutDashboard, FileText, BarChart2, Clock, Users, LogOut, UserCircle2 } from "lucide-react"; // Import UserCircle2 icon
 import { cn } from "@/lib/utils";
-import { useSession } from "./SessionContextProvider"; // Import useSession
-import { Button } from "@/components/ui/button"; // Import Button component
+import { useSession } from "./SessionContextProvider";
+import { Button } from "@/components/ui/button";
 
 export const SidebarNav: React.FC = () => {
-  const { logout } = useSession(); // Get logout function from context
+  const { logout } = useSession();
 
   const navItems = [
     {
@@ -35,6 +35,11 @@ export const SidebarNav: React.FC = () => {
       title: "Admin Panel",
       href: "/admin",
       icon: <Users className="h-4 w-4" />,
+    },
+    {
+      title: "Profil", // New profile link
+      href: "/profile",
+      icon: <UserCircle2 className="h-4 w-4" />, // Use UserCircle2 icon
     },
   ];
 

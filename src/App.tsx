@@ -10,8 +10,9 @@ import Reports from "./pages/Reports";
 import Statistics from "./pages/Statistics";
 import SessionsActives from "./pages/SessionsActives";
 import AdminPanel from "./pages/AdminPanel";
-import Login from "./pages/Login"; // Import the Login page
-import { SessionContextProvider, useSession } from "./components/SessionContextProvider"; // Import SessionContextProvider and useSession
+import Login from "./pages/Login";
+import Profile from "./pages/Profile"; // Import the Profile page
+import { SessionContextProvider, useSession } from "./components/SessionContextProvider";
 import React from "react";
 
 const queryClient = new QueryClient();
@@ -77,6 +78,14 @@ const AppContent = () => (
         element={
           <PrivateRoute>
             <AdminPanel />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/profile" // New route for the profile page
+        element={
+          <PrivateRoute>
+            <Profile />
           </PrivateRoute>
         }
       />
