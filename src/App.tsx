@@ -11,8 +11,9 @@ import Statistics from "./pages/Statistics";
 import SessionsActives from "./pages/SessionsActives";
 import AdminPanel from "./pages/AdminPanel";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile"; // Import the Profile page
+import Profile from "./pages/Profile";
 import { SessionContextProvider, useSession } from "./components/SessionContextProvider";
+import { ThemeProvider } from "./components/ThemeProvider"; // Import ThemeProvider
 import React from "react";
 
 const queryClient = new QueryClient();
@@ -24,7 +25,7 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <p>Chargement de la session...</p> {/* Or a spinner component */}
+        <p>Chargement de la session...</p>
       </div>
     );
   }
@@ -82,7 +83,7 @@ const AppContent = () => (
         }
       />
       <Route
-        path="/profile" // New route for the profile page
+        path="/profile"
         element={
           <PrivateRoute>
             <Profile />
@@ -102,7 +103,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SessionContextProvider>
-          <AppContent />
+          <ThemeProvider defaultTheme="system" attribute="class"> {/* Wrap with ThemeProvider */}
+            <AppContent />
+          </ThemeProvider>
         </SessionContextProvider>
       </BrowserRouter>
     </TooltipProvider>

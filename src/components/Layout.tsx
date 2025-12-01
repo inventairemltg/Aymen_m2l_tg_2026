@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import { SidebarNav } from "./SidebarNav";
+import { ThemeToggle } from "./ThemeToggle"; // Import ThemeToggle
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -52,7 +53,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <header className="sticky top-0 z-40 w-full border-b bg-background p-4 shadow-sm">
           <div className="container mx-auto flex items-center justify-between">
             <h2 className="text-2xl font-semibold">Inventaire Central</h2>
-            {/* Future header content like user menu, notifications */}
+            <ThemeToggle /> {/* Add ThemeToggle here */}
           </div>
         </header>
         <div className="flex-1 p-6 overflow-auto">
